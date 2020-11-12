@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     padding: 30px;
-    border-color: aquamarine;
-    border-style: solid;
 }
 
 .grid-container{
@@ -13,8 +11,8 @@
     'operands operands operators';
     border-style: solid;
     border-color: black;
-    min-width: 400px;
-    min-height: 400px;
+    min-width: 500px;
+    min-height: 500px;
 }
 
 .grid-container > div{
