@@ -1,0 +1,39 @@
+.calculator{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    border-color: aquamarine;
+    border-style: solid;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-areas: 'display display display'
+    'operands operands operators'
+    'operands operands operators';
+    max-width: 800px;
+}
+
+.grid-container > div{
+    text-align: center;
+    padding: 20px 0px;
+    font-size: 30px;
+}
+
+.display{
+    grid-area: display;
+}
+
+.operators{
+    grid-area: operators;
+}
+
+.operands{
+    grid-area: operands;
+    columns: 3;
+    margin-right: 30px;
+    border-color: black;
+    border-style: dashed;
+}
+
+
