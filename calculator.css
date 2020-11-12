@@ -21,17 +21,23 @@
 
 .display{
     grid-area: display;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
     font-size: 3rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    color: white;
+    background-color: rgba(12, 15, 1, 0.863);
+    justify-content: center;
 }
 
 .operators{
     grid-area: operators;
     display: grid;
     font-size: 3rem;
+    background-color: black;
+    color: lightblue;
+    border-left: 1px solid gray;
 }
 
 .operands{
@@ -39,7 +45,8 @@
     grid-area: operands;
     grid-template-columns: 1fr 1fr 1fr;
     font-size: 4rem;
-
+    background-color: black;
+    color: white;
 }
 
 
