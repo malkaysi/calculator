@@ -44,9 +44,23 @@
     display: grid;
     grid-area: operands;
     grid-template-columns: 1fr 1fr 1fr;
-    font-size: 4rem;
     background-color: black;
     color: white;
+}
+
+.digit{
+    font-size: 2em;
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.clear{
+    font-size: 3rem;
+    background-color: black;
+    color: lightblue;
+    border-left: 1px solid gray;
+    border: none;
 }
 
 

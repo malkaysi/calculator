@@ -33,3 +33,26 @@ function operate(a, operator, b){
 
 	return total;
 }
+
+const digits = document.querySelectorAll('.digit');
+const display = document.querySelector('.display');
+
+let value;
+
+digits.forEach((digit) => {
+	digit.addEventListener('click', () => {
+		display.innerHTML += digit.innerHTML;
+	})
+})
+
+console.log(value);
+
+
+const clear = document.querySelector('.clear');
+
+clear.addEventListener('click', () => {
+	display.innerHTML = '';
+})
+
+// I don't think we want to keep changing the display.innerHTML
+// We should assign the number to a value that we can use
