@@ -37,16 +37,12 @@ function operate(a, operator, b){
 const digits = document.querySelectorAll('.digit');
 const display = document.querySelector('.display');
 
-let value;
 
 digits.forEach((digit) => {
 	digit.addEventListener('click', () => {
-		display.innerHTML += digit.innerHTML;
+		display.innerHTML += digit.innerHTML;		
 	})
 })
-
-console.log(value);
-
 
 const clear = document.querySelector('.clear');
 
@@ -54,5 +50,8 @@ clear.addEventListener('click', () => {
 	display.innerHTML = '';
 })
 
-// I don't think we want to keep changing the display.innerHTML
-// We should assign the number to a value that we can use
+/*
+They are clicking on digits
+These digits are being passed to display.innertHTML
+When they click on an operator, a function should run, saving the value of the first pass to a variable
+*/
