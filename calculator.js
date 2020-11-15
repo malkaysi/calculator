@@ -1,18 +1,18 @@
 function add(a, b) {
 	total = a + b;
-	display.innerText = total;
+	// display.innerText = total;
 	return total;
 }
 
 function subtract(a, b) {
 	total = a - b;
-	display.innerText = total;
+	// display.innerText = total;
 	return total;
 }
 
 function multiply(a, b) {
 	total = a * b;
-	display.innerText = total;
+	// display.innerText = total;
 	return total;
 }
 
@@ -22,7 +22,7 @@ function divide(a, b) {
 		startOver();
 	} else {
 		total = a / b;
-		display.innerText = total;
+		// display.innerText = total;
 		return total;
 	}
 	
@@ -41,7 +41,19 @@ function operate(a, operator, b) {
 		total = divide(a, b);
 	}
 
+	if(Number.isInteger(total)){
+		display.innerText = total;
+		
+	} else {
+		total = total.toFixed(2);
+		display.innerText = total;
+	}
+	
 	return total;
+
+	
+
+	
 }
 
 const digits = document.querySelectorAll('.digit');
@@ -52,6 +64,7 @@ let firstNum = "";
 let secondNum = "";
 let operator = "";
 let calcOperator = "";
+let total = "";
 
 display.innerText = '0';
 
@@ -59,8 +72,9 @@ display.innerText = '0';
 digits.forEach((digit) => {
 	digit.addEventListener('click', e => {
 
-		if (operator === "") {
+		if (operator === "" && total == "") { // The very beginning, everything is reset and we need the first number
 			firstNum += e.target.innerText;
+			console.log(firstNum)
 			display.innerText = firstNum;
 			firstNum = parseFloat(firstNum);
 		} else {
@@ -74,11 +88,14 @@ digits.forEach((digit) => {
 operators.forEach((op) => {
 	op.addEventListener('click', e => {
 
-		if (e.target.innerText !== '=') {
+		if (e.target.innerText !== '=' && secondNum == "") {
 			operator = e.target.innerText;
-		} else {
-
+		} else if(e.target.innerText !== '=' && secondNum !== ""){
+			clearSecondNum();
+			operator = e.target.innerText;
+		} else if(e.target.innerText == '=') {
 			operate(firstNum, operator, secondNum);
+			startOver();
 		}
 
 	})
@@ -87,14 +104,22 @@ operators.forEach((op) => {
 const clear = document.querySelector('.clear');
 
 clear.addEventListener('click', e => {
+	display.innerText = "0";
 	startOver();
 })
 
 function startOver(){
-	display.innerText = "0";
+	
 	firstNum = '';
 	secondNum = '';
 	operator = '';
-	total = 0;
+	total = "";
+}
+
+function clearSecondNum(){
+	operate(firstNum, operator, secondNum);
+	firstNum = total;
+	secondNum = "";
+	operator = "";
 }
 
