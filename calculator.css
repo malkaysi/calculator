@@ -63,4 +63,12 @@
     border: none;
 }
 
+.operator{
+    font-size: 3rem;
+    background-color: black;
+    color: lightblue;
+    border-left: 1px solid gray;
+    border: none;
+}
+
 
