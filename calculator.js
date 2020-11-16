@@ -28,17 +28,20 @@ function divide(a, b) {
 	
 }
 
-function operate(a, operator, b) {
+function operate(firstNum, operator, secondNum) {
 	// Need to take an operator and 2 numbers then call a function
 
+	firstNum = parseFloat(firstNum);
+	secondNum = parseFloat(secondNum);
+
 	if (operator == '+') {
-		total = add(a, b);
+		total = add(firstNum, secondNum);
 	} else if (operator == '-') {
-		total = subtract(a, b);
+		total = subtract(firstNum, secondNum);
 	} else if (operator == 'X') {
-		total = multiply(a, b);
+		total = multiply(firstNum, secondNum);
 	} else if (operator == '/') {
-		total = divide(a, b);
+		total = divide(firstNum, secondNum);
 	}
 
 	if(Number.isInteger(total)){
@@ -73,14 +76,15 @@ digits.forEach((digit) => {
 	digit.addEventListener('click', e => {
 
 		if (operator === "" && total == "") { // The very beginning, everything is reset and we need the first number
-			firstNum += e.target.innerText;
+			firstNum += e.target.innerHTML;
+			console.log(typeof firstNum);
 			console.log(firstNum)
 			display.innerText = firstNum;
-			firstNum = parseFloat(firstNum);
+			
 		} else {
 			secondNum += e.target.innerText;
 			display.innerText = secondNum;
-			secondNum = parseFloat(secondNum);
+			
 		}
 	})
 })
@@ -93,7 +97,11 @@ operators.forEach((op) => {
 		} else if(e.target.innerText !== '=' && secondNum !== ""){
 			clearSecondNum();
 			operator = e.target.innerText;
+		}else if(e.target.innerText == '=' && (firstNum == "" || secondNum == "")){
+			alert("Don't ever do that again");
+			startOver();
 		} else if(e.target.innerText == '=') {
+			
 			operate(firstNum, operator, secondNum);
 			startOver();
 		}
